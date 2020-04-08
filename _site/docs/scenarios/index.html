@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Scenario Development | Magento 2 Twig Theme by Wamoco</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Scenario Development" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Develop a custom scenario" />
+<meta property="og:description" content="Develop a custom scenario" />
+<link rel="canonical" href="http://localhost:4000/docs/scenarios/" />
+<meta property="og:url" content="http://localhost:4000/docs/scenarios/" />
+<meta property="og:site_name" content="Magento 2 Twig Theme by Wamoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-07T21:50:05+02:00" />
+<script type="application/ld+json">
+{"description":"Develop a custom scenario","@type":"WebPage","url":"http://localhost:4000/docs/scenarios/","headline":"Scenario Development","dateModified":"2020-04-07T21:50:05+02:00","datePublished":"2020-04-07T21:50:05+02:00","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="alternate" type="application/rss+xml" title="Magento 2 Twig Theme by Wamoco" href="http://localhost:4000/feed.xml" />
+</head>
+
+
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container navbar-container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+            <a class="navbar-brand" href="/">
+                <span><img src="/assets/img/watchimon.png" alt="Logo"></span> Magento 2 Twig Theme by Wamoco
+            </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li  class="active" ><a href="/docs/home/">Docs</a></li>
+            </ul>
+            <div class="navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://git.wamoco.de"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="page-content">
+        <div class="wrapper">
+            <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-1" aria-expanded="false" aria-controls="collapse-1">
+            Docs
+          </a>
+        </h4>
+      </div>
+      
+      
+      <div class="panel-collapse collapse" id="collapse-1" role="tabpanel" aria-label="Side Navigation">
+        <div class="list-group">
+          
+            
+            
+            <a class="list-group-item " href="/docs/home/">Installation</a>
+          
+            
+            
+            <a class="list-group-item " href="/docs/structure/">Folder Structure</a>
+          
+            
+            
+            <a class="list-group-item " href="/docs/configuration/">Route Configuration</a>
+          
+            
+            
+            <a class="list-group-item " href="/docs/reference/">Variables and Functions Reference</a>
+          
+            
+            
+            <a class="list-group-item " href="/docs/extend/">Add Functions and Filters</a>
+          
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+        </div>
+
+        <div class="col-md-8">
+            <h1>Scenario Development</h1>
+            <div id="markdown-content-container"><h2 id="develop-a-custom-scenario">Develop a custom scenario</h2>
+
+<p>Some more insights on how to develop a scenario.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">title</span> <span class="s2">"Add to cart"</span>
+<span class="n">description</span> <span class="s2">"Added items should appear on cart"</span>
+
+<span class="n">define_option</span> <span class="s1">'product_path'</span><span class="p">,</span> <span class="ss">:string</span><span class="p">,</span> <span class="ss">default: </span><span class="s1">'/'</span><span class="p">,</span> <span class="ss">description: </span><span class="s2">"Path to product which should be put into cart"</span><span class="p">,</span> <span class="ss">required: </span><span class="kp">true</span>
+<span class="n">define_option</span> <span class="s1">'add_to_cart_button_label'</span><span class="p">,</span> <span class="ss">:string</span><span class="p">,</span> <span class="ss">default: </span><span class="s1">'In den Warenkorb'</span><span class="p">,</span> <span class="ss">description: </span><span class="s2">"Label of the add to cart button"</span><span class="p">,</span> <span class="ss">required: </span><span class="kp">true</span>
+<span class="n">define_option</span> <span class="s1">'cart_path'</span><span class="p">,</span> <span class="ss">:string</span><span class="p">,</span> <span class="ss">default: </span><span class="s1">'/checkout/cart'</span><span class="p">,</span> <span class="ss">description: </span><span class="s2">"Path for cart"</span><span class="p">,</span> <span class="ss">required: </span><span class="kp">true</span>
+<span class="n">define_option</span> <span class="s1">'product_name'</span><span class="p">,</span> <span class="ss">:string</span><span class="p">,</span> <span class="ss">description: </span><span class="s2">"Expected product name"</span><span class="p">,</span> <span class="ss">required: </span><span class="kp">true</span>
+<span class="n">define_option</span> <span class="s1">'product_sku'</span><span class="p">,</span> <span class="ss">:string</span><span class="p">,</span> <span class="ss">description: </span><span class="s2">"Expected product sku"</span><span class="p">,</span> <span class="ss">required: </span><span class="kp">true</span>
+<span class="n">define_option</span> <span class="s1">'cookies'</span><span class="p">,</span> <span class="ss">:string</span><span class="p">,</span> <span class="ss">description: </span><span class="s2">"Cookie value, e.g. to bypass GDPR protection if required"</span>
+
+<span class="n">define_interval</span> <span class="s1">'0 */4 * * *'</span><span class="p">,</span> <span class="ss">:limited</span>
+<span class="n">define_option</span> <span class="s1">'severity'</span><span class="p">,</span> <span class="ss">:string</span><span class="p">,</span> <span class="ss">default: </span><span class="s1">'critical'</span><span class="p">,</span> <span class="ss">description: </span><span class="s2">"Severity for issues generated by this scenario"</span><span class="p">,</span> <span class="ss">required: </span><span class="kp">true</span>
+
+<span class="n">scenario</span> <span class="sx">%{
+  Given I am on "%product_path%"
+  And I click on "%add_to_cart_button_label%"
+  When I am on "%cart_path%"
+  Then I should see text "%product_name%"
+  And I should see text "%product_sku%"
+}</span>
+</code></pre></div></div>
+</div>
+            <hr>
+            
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+        </div>
+
+    </div>
+</div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="container">
+
+        <p class="text-center">
+            Magento 2 Twig Theme by Wamoco 2020 |
+            Powered by <a href="https://github.com/aksakalli/jekyll-doc-theme">Jekyll Doc Theme</a>
+        </p>
+        <!-- <p class="text-muted">Place sticky footer content here.</p> -->
+    </div>
+</footer>
+
+    <script>
+  var baseurl = ''
+</script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="/assets/js/bootstrap.min.js "></script>
+<script src="/assets/js/typeahead.bundle.min.js "></script>
+
+<script src="/assets/js/main.js "></script>
+
+</body>
+
+</html>

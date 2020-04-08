@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Route Configuration | Magento 2 Twig Theme by Wamoco</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Route Configuration" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Every route/page that should be rendered using Twig needs to be registered first. Therefore an entry in config.xml needs to be created. Currently three different kinds are available, which are described in the following." />
+<meta property="og:description" content="Every route/page that should be rendered using Twig needs to be registered first. Therefore an entry in config.xml needs to be created. Currently three different kinds are available, which are described in the following." />
+<link rel="canonical" href="http://localhost:4000/docs/configuration/" />
+<meta property="og:url" content="http://localhost:4000/docs/configuration/" />
+<meta property="og:site_name" content="Magento 2 Twig Theme by Wamoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-07T21:50:05+02:00" />
+<script type="application/ld+json">
+{"description":"Every route/page that should be rendered using Twig needs to be registered first. Therefore an entry in config.xml needs to be created. Currently three different kinds are available, which are described in the following.","@type":"WebPage","url":"http://localhost:4000/docs/configuration/","headline":"Route Configuration","dateModified":"2020-04-07T21:50:05+02:00","datePublished":"2020-04-07T21:50:05+02:00","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="alternate" type="application/rss+xml" title="Magento 2 Twig Theme by Wamoco" href="http://localhost:4000/feed.xml" />
+</head>
+
+
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container navbar-container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+            <a class="navbar-brand" href="/">
+                <span><img src="/assets/img/watchimon.png" alt="Logo"></span> Magento 2 Twig Theme by Wamoco
+            </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li  class="active" ><a href="/docs/home/">Docs</a></li>
+            </ul>
+            <div class="navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://git.wamoco.de"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="page-content">
+        <div class="wrapper">
+            <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-1" aria-expanded="false" aria-controls="collapse-1">
+            Docs
+          </a>
+        </h4>
+      </div>
+      
+      
+      <div class="panel-collapse" id="collapse-1" role="tabpanel" aria-label="Side Navigation">
+        <div class="list-group">
+          
+            
+            
+            <a class="list-group-item " href="/docs/home/">Installation</a>
+          
+            
+            
+            <a class="list-group-item " href="/docs/structure/">Folder Structure</a>
+          
+            
+            
+            <a class="list-group-item active" href="/docs/configuration/">Route Configuration</a>
+          
+            
+            
+            <a class="list-group-item " href="/docs/reference/">Variables and Functions Reference</a>
+          
+            
+            
+            <a class="list-group-item " href="/docs/extend/">Add Functions and Filters</a>
+          
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+        </div>
+
+        <div class="col-md-8">
+            <h1>Route Configuration</h1>
+            <div id="markdown-content-container"><p>Every route/page that should be rendered using Twig needs to be registered first. Therefore an entry in <code class="language-plaintext highlighter-rouge">config.xml</code> needs to be created. Currently three different kinds are available, which are described in the following.</p>
+
+<h2 id="controllers">Controllers</h2>
+
+<p>Any Magento Controller can have a twig template attached. In this case the controller does not do the usual layout and template rendering. Instead it renders the given Twig template which is located in the base path <code class="language-plaintext highlighter-rouge">Wamoco_TwigTheme/web/templates</code> per convention.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;item name="Magento\Catalog\Controller\Product\View"&gt;pages/catalog/product.html.twig&lt;/item&gt;
+</code></pre></div></div>
+
+<h2 id="routes">Routes</h2>
+
+<p>To fetch routes that do not hit a controller directly a route matching can be configured. This is especially helpful for prototyping or static content pages.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;item name="/datenschutz"&gt;pages/custom/datenschutz.html.twig&lt;/item&gt;
+</code></pre></div></div>
+
+<h2 id="rewrites">Rewrites</h2>
+
+<p>There is also a rewrite mechanism included. Of course Magento features url rewrites out of the box, but for frontend porting and prototyping it can be very helpful to create static rewrites quick and easy like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &lt;item name="/kontakt"&gt;contact&lt;/item&gt;
+</code></pre></div></div>
+
+<h2 id="complete-example">Complete Example</h2>
+
+<p>Here we have a complete example of a working <code class="language-plaintext highlighter-rouge">config.xml</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;theme&gt;
+    &lt;controllers&gt;
+        &lt;item name="Magento\Catalog\Controller\Product\View"&gt;pages/catalog/product.html.twig&lt;/item&gt;
+        &lt;item name="Magento\Catalog\Controller\Category\View"&gt;pages/catalog/category.html.twig&lt;/item&gt;
+        &lt;item name="Magento\CatalogSearch\Controller\Result\Index"&gt;pages/catalog/search.html.twig&lt;/item&gt;
+        &lt;item name="Magento\Checkout\Controller\Cart\Index"&gt;pages/checkout/cart.html.twig&lt;/item&gt;
+    &lt;/controllers&gt;
+    &lt;routes&gt;
+        &lt;item name="/datenschutz"&gt;pages/custom/datenschutz.html.twig&lt;/item&gt;
+    &lt;/routes&gt;
+    &lt;rewrites&gt;
+        &lt;item name="/kontakt"&gt;contact&lt;/item&gt;
+    &lt;/rewrites&gt;
+&lt;/theme&gt;
+</code></pre></div></div>
+
+</div>
+            <hr>
+            
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+    <ul class="pager">
+      
+        
+        
+        <li class="previous">
+          <a href="/docs/structure/">
+            <span aria-hidden="true">&larr;</span> Previous
+          </a>
+        </li>
+      
+
+      
+        
+        
+        <li class="next">
+          <a href="/docs/reference/">
+            Next <span aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+      
+      </ul>
+    <div class="clear"></div>
+    
+
+        </div>
+
+    </div>
+</div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="container">
+
+        <p class="text-center">
+            Magento 2 Twig Theme by Wamoco 2020 |
+            Powered by <a href="https://github.com/aksakalli/jekyll-doc-theme">Jekyll Doc Theme</a>
+        </p>
+        <!-- <p class="text-muted">Place sticky footer content here.</p> -->
+    </div>
+</footer>
+
+    <script>
+  var baseurl = ''
+</script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="/assets/js/bootstrap.min.js "></script>
+<script src="/assets/js/typeahead.bundle.min.js "></script>
+
+<script src="/assets/js/main.js "></script>
+
+</body>
+
+</html>

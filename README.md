@@ -1,4 +1,4 @@
-# Watchimon SDK Doc
+# Twig Theme docs
 
 Based on https://github.com/aksakalli/jekyll-doc-theme.git
 

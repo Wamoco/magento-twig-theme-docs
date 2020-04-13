@@ -1,5 +1,5 @@
 ---
-title: Add Functions and Filters
+title: Adding own Functions and Filters
 permalink: /docs/extend/
 ---
 

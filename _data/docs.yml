@@ -1,8 +1,9 @@
 - title: Docs
   docs:
   - home
+  - how-it-works
   - structure
   - configuration
   - reference
   - extend
-
+  - frontend-rendering

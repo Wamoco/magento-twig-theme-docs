@@ -1,8 +1,8 @@
 # Site settings
-title: Magento 2 Twig Theme by Wamoco
+title: Magento Twig Theme
 email: info@wamoco.de
 description: >
-  Magento 2 Twig Theme
+  Magento Twig Theme
 lang: en-US
 
 baseurl: "" # the subpath of your site, e.g. /blog/

@@ -11,23 +11,23 @@
 
     <link rel="shortcut icon" href="/assets/img/favicon.ico">
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Variables and Functions Reference | Magento 2 Twig Theme by Wamoco</title>
+<title>Functions and Filters Reference | Magento Twig Theme</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Variables and Functions Reference" />
+<meta property="og:title" content="Functions and Filters Reference" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Base variables" />
-<meta property="og:description" content="Base variables" />
+<meta name="description" content="This list provides an overview of provided functions and filters that are available inside twig templates." />
+<meta property="og:description" content="This list provides an overview of provided functions and filters that are available inside twig templates." />
 <link rel="canonical" href="http://localhost:4000/docs/reference/" />
 <meta property="og:url" content="http://localhost:4000/docs/reference/" />
-<meta property="og:site_name" content="Magento 2 Twig Theme by Wamoco" />
+<meta property="og:site_name" content="Magento Twig Theme" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-04-07T21:50:05+02:00" />
+<meta property="article:published_time" content="2020-04-13T10:53:51+02:00" />
 <script type="application/ld+json">
-{"description":"Base variables","@type":"WebPage","url":"http://localhost:4000/docs/reference/","headline":"Variables and Functions Reference","dateModified":"2020-04-07T21:50:05+02:00","datePublished":"2020-04-07T21:50:05+02:00","@context":"http://schema.org"}</script>
+{"description":"This list provides an overview of provided functions and filters that are available inside twig templates.","@type":"WebPage","url":"http://localhost:4000/docs/reference/","headline":"Functions and Filters Reference","dateModified":"2020-04-13T10:53:51+02:00","datePublished":"2020-04-13T10:53:51+02:00","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-    <link rel="alternate" type="application/rss+xml" title="Magento 2 Twig Theme by Wamoco" href="http://localhost:4000/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Magento Twig Theme" href="http://localhost:4000/feed.xml" />
 </head>
 
 
@@ -43,7 +43,8 @@
         <span class="icon-bar"></span>
       </button>
             <a class="navbar-brand" href="/">
-                <span><img src="/assets/img/watchimon.png" alt="Logo"></span> Magento 2 Twig Theme by Wamoco
+                <!-- <span><img src="/assets/img/watchimon.png" alt="Logo"></span> -->
+                Magento Twig Theme
             </a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
@@ -86,6 +87,10 @@
           
             
             
+            <a class="list-group-item " href="/docs/how-it-works/">How it works</a>
+          
+            
+            
             <a class="list-group-item " href="/docs/structure/">Folder Structure</a>
           
             
@@ -94,11 +99,15 @@
           
             
             
-            <a class="list-group-item active" href="/docs/reference/">Variables and Functions Reference</a>
+            <a class="list-group-item active" href="/docs/reference/">Functions and Filters Reference</a>
           
             
             
-            <a class="list-group-item " href="/docs/extend/">Add Functions and Filters</a>
+            <a class="list-group-item " href="/docs/extend/">Adding own Functions and Filters</a>
+          
+            
+            
+            <a class="list-group-item " href="/docs/frontend-rendering/">Frontend Rendering</a>
           
         </div>
       </div>
@@ -109,60 +118,69 @@
         </div>
 
         <div class="col-md-8">
-            <h1>Variables and Functions Reference</h1>
-            <div id="markdown-content-container"><h2 id="base-variables">Base variables</h2>
+            <h1>Functions and Filters Reference</h1>
+            <div id="markdown-content-container"><p>This list provides an overview of provided functions and filters that are available inside twig templates.</p>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">Variable</th>
-      <th style="text-align: left">Description</th>
-      <th style="text-align: left">Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">base.assetPath</td>
-      <td style="text-align: left">Url to assets</td>
-      <td style="text-align: left">http://magento2.local/pub/static/version1585215959/frontend/Wamoco/karl/de_DE</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">base.baseViewUrl</td>
-      <td style="text-align: left">Url to Twig Module for accessing templates</td>
-      <td style="text-align: left">http://magento2.local/pub/static/version1585215959/frontend/Wamoco/karl/de_DE/Wamoco_TwigTheme</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">base.baseUrl</td>
-      <td style="text-align: left">Magento 2 Base Url</td>
-      <td style="text-align: left">http://magento2.local/</td>
-    </tr>
-  </tbody>
-</table>
+<h2 id="functions">Functions</h2>
+
+<h3 id="blockexists">blockExists</h3>
 
 <p><strong>Usage Example</strong></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ base.assetPath }}
+<p>Checks if a block exists in the current layout.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if blockExists('page.main.title') %}
+  {{ include('partials/page-title.html.twig', {pageTitle: getBlock('page.main.title').getPageHeading }) }}
+{% endif %}
 </code></pre></div></div>
 
-<h2 id="getjs">GetJs</h2>
-
-<p>Accessing Magento 2 Assets e.g. JavaScripts. This is equivalent for <code class="language-plaintext highlighter-rouge">getViewFileUrl</code> in Magento.</p>
+<h3 id="customerdata">customerData</h3>
 
 <p><strong>Usage Example</strong></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script type="text/javascript" src="{{getJs('requirejs/require.js')}}"&gt;&lt;/script&gt;
+<p>Fetches data from CustomerData like. Data like customer, wishlist or cart can be received there. Compare <a href="https://devdocs.magento.com/guides/v2.3/extension-dev-guide/cache/page-caching/private-content.html">Magento Dev Docs</a>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ customerData('customer').fullname }}
 </code></pre></div></div>
 
-<h2 id="getproduct">GetProduct</h2>
+<h3 id="getactivefilters">getActiveFilters</h3>
 
-<p>Receives a product object by SKU or ID.</p>
+<p>Only useful on category pages. It receives the currently active filters.</p>
 
 <p><strong>Usage Example</strong></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ getProduct('24-MB01') }}
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if getActiveFilters()|length &gt; 0 %}
+  &lt;div class="widget brands {%if filter.getData('swatchData')%}color{%endif%} mb-50"&gt;
+      &lt;!-- Widget Title 2 --&gt;
+      &lt;p class="widget-title2 mb-30"&gt;{{'Now Shopping by'|trans}}&lt;/p&gt;
+      &lt;div class="widget-desc"&gt;
+        {% for activeFilter in getActiveFilters() %}
+          &lt;p&gt;{{ activeFilter.filter.name }}: {{ activeFilter.label}} &lt;a href="{{activeFilter.getRemoveUrl}}"&gt;[{{'Remove'|trans}}]&lt;/a&gt;&lt;/p&gt;
+        {% endfor %}
+      &lt;/div&gt;
+  &lt;/div&gt;
+{% endif %}
 </code></pre></div></div>
 
-<h2 id="getblock">GetBlock</h2>
+<h3 id="getasset">getAsset</h3>
+
+<p>This is a shortcut for <code class="language-plaintext highlighter-rouge">$this-&gt;template-&gt;getViewFileUrl("Wamoco_TwigTheme")</code>, which gives the URL web assets are placed.</p>
+
+<p><strong>Usage Example</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;link rel="stylesheet" href="{{ getAsset('/css/simple-grid.css') }}" async defer&gt;
+</code></pre></div></div>
+
+<h3 id="getbaseurl">getBaseUrl</h3>
+
+<p>Gets the baseUrl for the current store view. This value needs also be present in JS to make some of the UI components work.</p>
+
+<p><strong>Usage Example</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>window.BASE_URL = "{{ getBaseUrl() }}";
+</code></pre></div></div>
+
+<h3 id="getblock">getBlock</h3>
 
 <p>Receives a block which is defined in the current layout handles. All provided methods can be accessed.</p>
 
@@ -173,7 +191,134 @@
 {{ getBlock('product.info').getProduct.price|price|raw }}
 </code></pre></div></div>
 
-<h2 id="renderelement">RenderElement</h2>
+<h3 id="getcart">getCart</h3>
+
+<p>Receives cart data of current customer. Make sure to use this only on non-cachable pages.</p>
+
+<p><strong>Usage Example</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% for item in getCart().items %}
+    {{ item.product.name }}
+{% endfor %}
+</code></pre></div></div>
+
+<h3 id="getcustomer">getCustomer</h3>
+
+<p>Gets information about the current customer. Make sure to use this only on non-cachable pages.</p>
+
+<p><strong>Usage Example</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;p&gt;{{ getCustomer().firstname }} {{ getCustomer().lastname }}&lt;/p&gt;
+&lt;p&gt;{{ getCustomer().email }}&lt;/p&gt;
+</code></pre></div></div>
+
+<h3 id="getfilters">getFilters</h3>
+
+<p>Only useful on category pages. Gets a list of available filters including their swatch data.</p>
+
+<p><strong>Usage Example</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% for filter in getFilters() %}
+  &lt;p&gt;{{filter.name}}&lt;/p&gt;
+  &lt;ul&gt;
+    {% for filterItem in filter.items %}
+      &lt;li&gt;&lt;a href="{{ filterItem.url }}"&gt;{{ filterItem.label|raw }}({ {filterItem.count }})&lt;/a&gt;&lt;/li&gt;
+    {% endfor %}
+  &lt;/ul&gt;
+{% endfor %}
+</code></pre></div></div>
+
+<h3 id="getformkey">getFormKey</h3>
+
+<p>Gets the formKey. Usually you would rather render the form block like this: <code class="language-plaintext highlighter-rouge">{{ renderBlock('formkey') }}</code>.</p>
+
+<p><strong>Usage Example</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;input type="hidden" name="form_key" value="{{ getFormKey }}"&gt;
+</code></pre></div></div>
+
+<h3 id="gethelper">getHelper</h3>
+
+<p>Receives any Helper by its class name.</p>
+
+<p><strong>Usage Example</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;input name="name" id="name" title="{{'Name'|trans}}" value="{{ getHelper('Wamoco\\Theme\\View\\Helper\\Contact').getName }}" class="input-text form-control" type="text" data-validate="{required:true}"/&gt;
+</code></pre></div></div>
+
+<h3 id="getjs">getJs</h3>
+
+<p>Accessing Magento 2 Assets e.g. JavaScripts. This is equivalent for <code class="language-plaintext highlighter-rouge">getViewFileUrl</code> in Magento.</p>
+
+<p><strong>Usage Example</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script type="text/javascript" src="{{getJs('requirejs/require.js')}}"&gt;&lt;/script&gt;
+</code></pre></div></div>
+
+<h3 id="getproduct">getProduct</h3>
+
+<p>Receives a product object by SKU or ID. If no argument is provided, the current product is returned, e.g. on product detail pages.</p>
+
+<p><strong>Usage Example</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ getProduct('24-MB01') }}
+</code></pre></div></div>
+
+<h3 id="getrequest">getRequest</h3>
+
+<p>Gets the current request object.</p>
+
+<p><strong>Usage Example</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ getRequestParam().getParam('token') }}
+</code></pre></div></div>
+
+<h3 id="getrequestparam">getRequestParam</h3>
+
+<p>Gets a request parameter by its name.</p>
+
+<p><strong>Usage Example</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;input type="search" name="q" id="headerSearch" placeholder="{{'Search entire store here...'|trans}}" value="{{ getRequestParam('q')|escape }}"&gt;
+</code></pre></div></div>
+
+<h3 id="geturl">getUrl</h3>
+
+<p>Uses the UrlBuilder of Magento to generate URLs.</p>
+
+<p><strong>Usage Example</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;form method="POST" action="{{ getUrl('contact/index/post') }}"&gt;
+</code></pre></div></div>
+
+<h3 id="getviewfileurl">getViewFileUrl</h3>
+
+<p>Accessing Magento 2 Assets e.g. JavaScripts. This is equivalent for <code class="language-plaintext highlighter-rouge">getViewFileUrl</code> in Magento.</p>
+
+<p><strong>Usage Example</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script type="text/javascript" src="{{getViewFileUrl('requirejs/require.js')}}"&gt;&lt;/script&gt;
+</code></pre></div></div>
+
+<h3 id="renderblock">renderBlock</h3>
+
+<p>Render any block in the current layout by its name.</p>
+
+<p><strong>Usage Example</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ renderBlock('customer.customer.data') }}
+</code></pre></div></div>
+
+<h3 id="rendercmsblock">renderCmsBlock</h3>
+
+<p>Fetches a CMS block by its name from backend and renders it.</p>
+
+<p><strong>Usage Example</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ renderCmsBlock('home-page-block') }}
+</code></pre></div></div>
+
+<h3 id="renderelement">renderElement</h3>
 
 <p>Renderes a layout element within Magento and returns the html. This is useful to render entire parts and place them somewhere.</p>
 
@@ -182,16 +327,35 @@
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ renderElement('sidebar.main') }}
 </code></pre></div></div>
 
-<h2 id="trans">trans</h2>
+<h3 id="include-a-partial">Include a partial</h3>
 
-<p>Uses the built-in translation function to translate strings.</p>
+<p>Actually this is a built-in twig feature, but helpful for reference.</p>
 
 <p><strong>Usage Example</strong></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 'Country'|trans }}
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% include 'pages/cms/shop/product.html.twig' with {'product': getProduct('24-MB01')} %}
 </code></pre></div></div>
 
-<h2 id="price">Price</h2>
+<h2 id="filters">Filters</h2>
+
+<h3 id="formatdate">formatDate</h3>
+
+<p><strong>Usage Example</strong></p>
+
+<p>Formats a date according to the locale settings.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;td&gt;{{order.getCreatedAt|formatDate}}&lt;/td&gt;
+</code></pre></div></div>
+
+<h3 id="escapehtmlattr">escapeHtmlAttr</h3>
+
+<p><strong>Usage Example</strong></p>
+
+<h3 id="escapeurl">escapeUrl</h3>
+
+<p><strong>Usage Example</strong></p>
+
+<h3 id="price">price</h3>
 
 <p>Formats a price according to the currency settings of the current store view.</p>
 
@@ -200,13 +364,13 @@
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ getBlock('product.info').getProduct.price|price|raw }}
 </code></pre></div></div>
 
-<h2 id="include-partial">Include Partial</h2>
+<h3 id="trans">trans</h3>
 
-<p>Actually this is a built-in twig feature, but helpful for reference.</p>
+<p>Uses the built-in translation function to translate strings.</p>
 
 <p><strong>Usage Example</strong></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% include 'pages/cms/shop/product.html.twig' with {'product': getProduct('24-MB01')} %}
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 'Country'|trans }}
 </code></pre></div></div>
 
 </div>
@@ -216,6 +380,9 @@
 
 
 
+
+  
+  
 
   
   
@@ -264,7 +431,7 @@
     <div class="container">
 
         <p class="text-center">
-            Magento 2 Twig Theme by Wamoco 2020 |
+            Magento Twig Theme 2020 |
             Powered by <a href="https://github.com/aksakalli/jekyll-doc-theme">Jekyll Doc Theme</a>
         </p>
         <!-- <p class="text-muted">Place sticky footer content here.</p> -->

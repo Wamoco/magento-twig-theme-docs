@@ -11,6 +11,13 @@
     
     
     {
+      "title": "How it works",
+      "url": "/docs/how-it-works/"
+    },
+  
+    
+    
+    {
       "title": "Folder Structure",
       "url": "/docs/structure/"
     },
@@ -25,15 +32,22 @@
     
     
     {
-      "title": "Variables and Functions Reference",
+      "title": "Functions and Filters Reference",
       "url": "/docs/reference/"
     },
   
     
     
     {
-      "title": "Add Functions and Filters",
+      "title": "Adding own Functions and Filters",
       "url": "/docs/extend/"
+    },
+  
+    
+    
+    {
+      "title": "Frontend Rendering",
+      "url": "/docs/frontend-rendering/"
     },
   
 

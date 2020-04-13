@@ -14,7 +14,6 @@ First, create and register your theme, like you would normally do in Mageto 2. F
           - fonts/
           - img/
           - js/
-          - scss/
           - templates/
           requirejs-config.js
         composer.json

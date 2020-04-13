@@ -11,19 +11,19 @@
 
     <link rel="shortcut icon" href="/assets/img/favicon.ico">
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Adding own Functions and Filters | Magento Twig Theme</title>
+<title>How it works | Magento Twig Theme</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Adding own Functions and Filters" />
+<meta property="og:title" content="How it works" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Defining custom filters and functions" />
-<meta property="og:description" content="Defining custom filters and functions" />
-<link rel="canonical" href="http://localhost:4000/docs/extend/" />
-<meta property="og:url" content="http://localhost:4000/docs/extend/" />
+<meta name="description" content="The idea is not only to make Twig available as an alternative template rendering engine in Magento. There are already modules to accomplish this, e.g. Magento2-Twig. Our approach goes beyond that and features a way to exchange entire pages. There is no need to rely on cumbersome xml layout updates to modify page structure which is always a struggle for Frontend Developers not familiar with Magento." />
+<meta property="og:description" content="The idea is not only to make Twig available as an alternative template rendering engine in Magento. There are already modules to accomplish this, e.g. Magento2-Twig. Our approach goes beyond that and features a way to exchange entire pages. There is no need to rely on cumbersome xml layout updates to modify page structure which is always a struggle for Frontend Developers not familiar with Magento." />
+<link rel="canonical" href="http://localhost:4000/docs/how-it-works/" />
+<meta property="og:url" content="http://localhost:4000/docs/how-it-works/" />
 <meta property="og:site_name" content="Magento Twig Theme" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-04-13T11:02:49+02:00" />
 <script type="application/ld+json">
-{"description":"Defining custom filters and functions","@type":"WebPage","url":"http://localhost:4000/docs/extend/","headline":"Adding own Functions and Filters","dateModified":"2020-04-13T11:02:49+02:00","datePublished":"2020-04-13T11:02:49+02:00","@context":"http://schema.org"}</script>
+{"description":"The idea is not only to make Twig available as an alternative template rendering engine in Magento. There are already modules to accomplish this, e.g. Magento2-Twig. Our approach goes beyond that and features a way to exchange entire pages. There is no need to rely on cumbersome xml layout updates to modify page structure which is always a struggle for Frontend Developers not familiar with Magento.","@type":"WebPage","url":"http://localhost:4000/docs/how-it-works/","headline":"How it works","dateModified":"2020-04-13T11:02:49+02:00","datePublished":"2020-04-13T11:02:49+02:00","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -83,7 +83,7 @@
           
             
             
-            <a class="list-group-item " href="/docs/how-it-works/">How it works</a>
+            <a class="list-group-item active" href="/docs/how-it-works/">How it works</a>
           
             
             
@@ -103,7 +103,7 @@
           
             
             
-            <a class="list-group-item active" href="/docs/extend/">Adding own Functions and Filters</a>
+            <a class="list-group-item " href="/docs/extend/">Adding own Functions and Filters</a>
           
             
             
@@ -118,58 +118,12 @@
         </div>
 
         <div class="col-md-8">
-            <h1>Adding own Functions and Filters</h1>
-            <div id="markdown-content-container"><h2 id="defining-custom-filters-and-functions">Defining custom filters and functions</h2>
+            <h1>How it works</h1>
+            <div id="markdown-content-container"><p>The idea is not only to make Twig available as an alternative template rendering engine in Magento. There are already modules to accomplish this, e.g. <a href="https://github.com/SchumacherFM/Magento2-Twig">Magento2-Twig</a>. Our approach goes beyond that and features a way to exchange entire pages. There is no need to rely on cumbersome xml layout updates to modify page structure which is always a struggle for Frontend Developers not familiar with Magento.</p>
 
-<p>Example <code class="language-plaintext highlighter-rouge">di.xml</code>:</p>
+<p>Twig itself is very simple. Some basic things are required, like control structures, output variables and include some other templates. Thats all. But where and how is the data accessible you ask?</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;type name="Wamoco\TwigTheme\Engine\Twig"&gt;
-    &lt;arguments&gt;
-        &lt;argument name="filters" xsi:type="array"&gt;
-            &lt;item name="price" xsi:type="string"&gt;Wamoco\TwigTheme\View\Filters\Price&lt;/item&gt;
-        &lt;/argument&gt;
-        &lt;argument name="functions" xsi:type="array"&gt;
-            &lt;item name="renderElement" xsi:type="string"&gt;Wamoco\TwigTheme\View\Functions\RenderElement&lt;/item&gt;
-        &lt;/argument&gt;
-    &lt;/arguments&gt;
-&lt;/type&gt;
-</code></pre></div></div>
-
-<p>Example <code class="language-plaintext highlighter-rouge">Price.php</code>:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?php
-namespace Wamoco\TwigTheme\View\Filters;
-
-class Price extends \Twig\TwigFilter
-{
-    /**
-     * @var \Magento\Framework\Pricing\PriceCurrencyInterface
-     */
-    protected $priceCurrency;
-
-    /**
-     * __construct
-     *
-     * @param \Magento\Framework\Pricing\PriceCurrencyInterface $priceCurrency
-     * @param mixed $name
-     */
-    public function __construct (
-        \Magento\Framework\Pricing\PriceCurrencyInterface $priceCurrency,
-        $name
-    ) {
-        parent::__construct($name);
-        $this-&gt;priceCurrency = $priceCurrency;
-    }
-
-    public function getCallable()
-    {
-        return function($string) {
-            return $this-&gt;priceCurrency-&gt;convertAndFormat($string, false);
-        };
-    }
-}
-</code></pre></div></div>
-
+<p>This is, where the magic comes in. This module provides a bridge to access all required data from Magento in your Twig templates. It doesnt matter from which Helper, or Block this data is coming from. By using some provided functions and filters you will be able access everything.</p>
 </div>
             <hr>
             
@@ -180,27 +134,10 @@ class Price extends \Twig\TwigFilter
 
   
   
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
     <ul class="pager">
       
-        
-        
-        <li class="previous">
-          <a href="/docs/reference/">
+        <li class="previous disabled">
+          <a>
             <span aria-hidden="true">&larr;</span> Previous
           </a>
         </li>
@@ -210,7 +147,7 @@ class Price extends \Twig\TwigFilter
         
         
         <li class="next">
-          <a href="/docs/frontend-rendering/">
+          <a href="/docs/installation/">
             Next <span aria-hidden="true">&rarr;</span>
           </a>
         </li>

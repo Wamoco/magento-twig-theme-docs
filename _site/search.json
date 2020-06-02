@@ -5,49 +5,49 @@
     
     {
       "title": "How it works",
-      "url": "/docs/how-it-works/"
+      "url": "/magento-twig-theme/docs/how-it-works/"
     },
   
     
     
     {
       "title": "Installation",
-      "url": "/docs/installation/"
+      "url": "/magento-twig-theme/docs/installation/"
     },
   
     
     
     {
       "title": "Folder Structure",
-      "url": "/docs/structure/"
+      "url": "/magento-twig-theme/docs/structure/"
     },
   
     
     
     {
       "title": "Route Configuration",
-      "url": "/docs/configuration/"
+      "url": "/magento-twig-theme/docs/configuration/"
     },
   
     
     
     {
       "title": "Functions and Filters Reference",
-      "url": "/docs/reference/"
+      "url": "/magento-twig-theme/docs/reference/"
     },
   
     
     
     {
       "title": "Adding own Functions and Filters",
-      "url": "/docs/extend/"
+      "url": "/magento-twig-theme/docs/extend/"
     },
   
     
     
     {
       "title": "Frontend Rendering",
-      "url": "/docs/frontend-rendering/"
+      "url": "/magento-twig-theme/docs/frontend-rendering/"
     },
   
 
@@ -55,12 +55,12 @@
   
   {
   "title": "Jekyll Doc Theme is published!",
-  "url": "/blog/2017/05/03/jekyll-doc-theme/"
+  "url": "/magento-twig-theme/blog/2017/05/03/jekyll-doc-theme/"
   },
   
   {
   "title": "Welcome to Jekyll!",
-  "url": "/blog/2017/02/01/welcome-to-jekyll/"
+  "url": "/magento-twig-theme/blog/2017/02/01/welcome-to-jekyll/"
   }
   
 ]

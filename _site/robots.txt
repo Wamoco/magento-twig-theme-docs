@@ -1,1 +1,1 @@
-Sitemap: https://doc.wamoco.de/sitemap.xml
+Sitemap: http://localhost:4000/magento-twig-theme/sitemap.xml

@@ -5,8 +5,8 @@ description: >
   Magento Twig Theme
 lang: en-US
 
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: https://doc.wamoco.de # the base hostname & protocol for your site
+baseurl: "/magento-twig-theme/" # the subpath of your site, e.g. /blog/
+url: https://wamoco.github.io # the base hostname & protocol for your site
 git_address: https://git.wamoco.de
 
 # theme options from https://bootswatch.com/3/

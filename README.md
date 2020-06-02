@@ -32,6 +32,7 @@ As of the move to support [Github Pages](https://pages.github.com/) a number of 
 - allposts.html
 - search.json
 
+    cp -R _site/assets .
 
 ## License
 
